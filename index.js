@@ -1,6 +1,6 @@
 const mongoose= require("mongoose");
 const app= require("./app");
-const port =3000;
+const port =process.env.PORT||3977;
 
 const urlMongo= "mongodb+srv://admin1:admin123456@antoniodb.bqiyi.mongodb.net/antoniodb";
 mongoose.connect(urlMongo,(err,res)=>{

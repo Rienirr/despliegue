@@ -1,8 +1,8 @@
 const mongoose= require("mongoose");
 const app= require("./app");
 const port =3000;
-//const urlMongo= "mongodb+srv://admin:<admin123456>@cluster0.7iic4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const urlMongo= "mongodb+srv://admin:<admin123456>@cluster0.7iic4.mongodb.net/Cluster0";
+
+const urlMongo= "mongodb+srv://admin1:admin123456@antoniodb.bqiyi.mongodb.net/antoniodb";
 mongoose.connect(urlMongo,(err,res)=>{
 try{
     if(err){

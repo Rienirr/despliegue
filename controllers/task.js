@@ -15,11 +15,61 @@ async function createTask(req, res){
         res.status(500).send(error);
     }
 }
-/* function createTask(req,res){
-    console.log("Creando nuestra primera tarea");
-    //console.log(req.body);
-} */
+ async function getTasks(req, res){
+    try{
+        const tasks = await Task.find().sort({created_at: -1});
+        if(!tasks){
+res.status(400).send({ msg: "Error al obtener las tareas"});
+        }
+        else{
+            res.status(400).send(tasks);     
+        }
+    }catch(error){
+res.status(500).send(error);
+ }
+}
+async function getTask(req ,res){
+  const idTask = req.params.id;
+  try{
+      const task= await Task.findById(idTask);
+      if(!task){
+          res.status(400).send({msg: "No se encuentra la tarea "});
+      }else{
+         res.status(200).send(task);
+      }
+  }catch(error){
+    res.status(500).send(error);
+  }
+}
+async function updateTask(req,res){
+    const idTask=req.params.id;
+    const params= req.body;
+
+    try{
+        const task= await Task.findByIdAndUpdate(idTask, params);
+        if(!task){
+            res.status(400).send({msg:"No se ha podido actualizar"});
+        }else{
+            res.status(200).send({msg:"Actulización completada"});
+        }
+    }catch(error){
+            res.status(500).send(error);
+    }
+}
+async function deleteTask(req,res){
+    const idTask=req.params.id;
+    try{
+        const task =await Task.findByIdAndDelete(idTask);
+        if(!task){
+            res.status(400).send({msg: "No se ha podido eliminar la tarea"});
+        }else{
+            res.status(200).send(task);
+        }
+    }catch(error){
+        res.status(500).send(error);
+    }
+}
 
 module.exports={
-    createTask,
+    createTask,getTasks,getTask,updateTask,deleteTask,
 }

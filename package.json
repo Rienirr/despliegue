@@ -10,7 +10,7 @@
   "author": "Antonio Bonmati Robles",
   "license": "MIT",
   "dependencies": {
-    "mongoose": "^6.1.8"
+    "mongoose": "^6.2.0"
   },
   "devDependencies": {
     "express": "^4.17.2",
